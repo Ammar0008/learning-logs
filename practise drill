@@ -1,0 +1,21 @@
+Date: 2026-09-12
+Drill: Podman Basics — Container Name Conflict & Fix
+
+Commands:
+- podman run -it --name alpine1 alpine
+  -> Error: container name "alpine1" already in use
+- podman ps
+  -> No running containers listed
+- podman rm -f alpine1
+  -> alpine1 removed successfully
+- podman run -it --name alpine1 alpine
+  -> Container started, prompt shown: / #
+
+Output:
+Error: creating container storage: the container name "alpine1" is already in use...
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+alpine1
+/ #
+
+Note:
+This drill showed how Podman blocks reuse of container names if a stopped container still exists. Fix was to remove the old container with `podman rm -f alpine1`, then re‑run. Container launched successfully and gave interactive shell prompt.
