@@ -1,0 +1,20 @@
+Date: 2026-09-13
+Drill: Podman Basics — Volumes (Persistence)
+
+Commands:
+- mkdir podman_data
+- podman run -it --name alpine2 -v ./podman_data:/data alpine
+- cd /data
+- echo "Hello Podman volume" > note.txt
+- echo "First time i failed in this" > note.txt
+- echo "Second time i did it good" > note.txt
+- exit
+- cat podman_data/note.txt
+
+Output:
+Second time i did it good
+
+Note:
+This drill showed how to mount a host folder (`podman_data`) into a Podman container at `/data`. 
+File `note.txt` was created inside the container and persisted on the host. 
+The final overwrite confirmed persistence worked correctly.
