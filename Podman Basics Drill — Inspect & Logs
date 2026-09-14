@@ -1,0 +1,17 @@
+Date: 2026-09-14
+Drill: Podman Basics — Inspect & Logs (Running Container)
+
+Commands:
+- podman rm -f alpine2
+- podman run -dt --name alpine2 -v ./podman_data:/data alpine sleep 1000
+- podman inspect alpine2
+- podman inspect alpine2 --format '{{ .NetworkSettings.IPAddress }}'
+- podman exec alpine2 echo "Testing logs"
+- podman logs alpine2
+
+Output:
+Container alpine2 running (sleep 1000).
+Inspect shows full metadata (ID, mounts, state = running).
+IP filter empty (network mode = pasta).
+Exec worked: "Testing logs".
+Logs captured container activity.
