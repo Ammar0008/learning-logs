@@ -1,0 +1,70 @@
+Date: 2026-09-21
+
+Drill: Podman Networking + K3s Installation Basics
+
+Podman Section:
+
+Commands:
+- podman pod create --name mypod -p 8081:80
+- podman run -d --pod mypod --name nginx1 --replace nginx
+- podman logs nginx1
+- curl http://localhost:8081
+
+Results:
+- Created Podman pod named mypod.
+- Ran Nginx inside the pod.
+- Checked Nginx logs.
+- Successfully accessed Nginx through localhost:8081.
+- Received default Nginx welcome page.
+
+Learning:
+- Pods can contain multiple containers.
+- Podman pod networking works through shared pod networking.
+- Port mapping worked successfully.
+
+--------------------------------------------------
+
+K3s Section:
+
+Commands:
+- curl -sfL https://get.k3s.io | sh -
+- sudo systemctl status k3s
+- mkdir -p ~/.kube
+- sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+- sudo chown -R $(id -u):$(id -g) ~/.kube
+- echo 'export KUBECONFIG=$HOME/.kube/config' >> ~/.bashrc
+- source ~/.bashrc
+- kubectl get nodes
+- kubectl get pods -A
+- kubectl get svc -A
+- kubectl get namespaces
+
+Results:
+- Installed K3s successfully.
+- Verified K3s service is running.
+- Fixed kubeconfig permission issues.
+- Configured kubectl access for normal user.
+- Verified Kubernetes node status.
+
+Output:
+NAME    STATUS   ROLES           AGE    VERSION
+ammar   Ready    control-plane   3d1h   v1.36.4+k3s1
+
+Learning:
+- Node = machine participating in cluster.
+- Pod = smallest deployable Kubernetes unit.
+- Service = networking entry point for workloads.
+- Namespace = logical grouping inside Kubernetes.
+- kubectl communicates with cluster through kubeconfig.
+
+Current Status:
+- K3s cluster installed and working.
+- kubectl functioning normally.
+- Node status is Ready.
+- Podman networking drill completed.
+
+Remaining:
+- Podman vs Docker Networking Comparison.
+- First Kubernetes Deployment.
+- First Kubernetes Service.
+- First NodePort Test.
