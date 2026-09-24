@@ -1,0 +1,24 @@
+Date: 2026-09-24
+Drill: K3s Cluster Exploration
+Commands:
+- kubectl get nodes
+- kubectl get pods -A
+- kubectl get svc -A
+- kubectl get namespaces
+Results:
+- Verified Kubernetes cluster access.
+- Explored nodes, pods, services and namespaces.
+- Observed node status changed from Ready to NotReady.
+- System pods mostly running successfully.
+- Began Deployment YAML practice using nano.
+Learning:
+- Node = machine running Kubernetes.
+- Pod = smallest Kubernetes workload.
+- Service = networking entry point.
+- Namespace = logical grouping inside cluster.
+- Kubernetes troubleshooting is important before deploying workloads.
+Current Status:
+- Cluster accessible.
+- kubectl functioning.
+- Node currently shows NotReady.
+- Deployment creation postponed until node health is verified.
