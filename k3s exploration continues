@@ -1,0 +1,53 @@
+Objective
+
+Master the foundational 20% of Kubernetes / K3s operations that account for 80% of day-to-day deployment, verification, debugging, and teardown tasks.
+
+Commands Executed & Workflow
+
+1. Cluster Health Check
+
+Verified that the K3s cluster nodes and core system components are up, running, and healthy.
+
+k3s kubectl get nodes
+k3s kubectl get pods -A
+
+
+Key Learning: Quickly check if the control-plane and system services (like CoreDNS, Traefik, and metrics-server) are running smoothly across all namespaces.
+
+2. Workload Deployment & Network Exposure
+
+Deployed an Nginx test container and exposed it via an internal ClusterIP service.
+
+k3s kubectl run mamba-web --image=nginx --port=80
+k3s kubectl expose pod mamba-web --type=ClusterIP --port=80
+
+
+Key Learning: How to spin up rapid test pods and attach a service routing layer inside the cluster. (Note: Avoid spaces around = characters when passing flags like --port=80).
+
+3. Verification of Resources
+
+Checked active pods and services in the default namespace.
+
+k3s kubectl get pods,svc
+
+
+Key Learning: Confirming that both the application pod and its corresponding ClusterIP service are active and properly mapped.
+
+4. Debugging & Log Inspection
+
+Pulled container runtime logs from the active Nginx pod to inspect startup sequences and configuration details.
+
+k3s kubectl logs mamba-web
+
+
+Key Learning: Essential for troubleshooting misconfigured containers, missing entrypoints, or runtime errors.
+
+5. Teardown & Environment Sanitation
+
+Cleaned up the cluster by deleting the test pod and service, leaving the default namespace spotless.
+
+k3s kubectl delete pod mamba-web && k3s kubectl delete svc mamba-web
+k3s kubectl get pods,svc
+
+
+Key Learning: Ensuring no ghost resources or stale configurations are left behind in the cluster.
