@@ -1,0 +1,30 @@
+```markdown
+# Session Log: Kubernetes Deployment Drills & YAML Mastery
+
+## Summary
+- Executed hands-on K3s Deployment configuration drills using WSL Ubuntu and VS Code.
+- Practiced manual YAML writing to build syntax muscle memory, avoiding copy-paste shortcuts.
+- Addressed root path navigation and fixed core YAML structure errors (`apiVersion`, `kind`, `metadata`, and `spec`).
+- Analyzed Kubernetes validation feedback for missing spec, selectors, and containers.
+
+## Commits & Practical Commands Log
+- `feat(k8s): initialize core deployment metadata and structure`
+  - Navigation & verification commands:
+    ```bash
+    pwd
+    cd "/mnt/c/Users/Ammar/OneDrive/Desktop/dummy folder"
+    ls
+    ```
+- `fix(yaml): correct key-value pairs and indentation for apiVersion and metadata`
+  - Applied and tested core syntax blocks:
+    ```bash
+    kubectl apply -f nginx-deployment.yaml
+    ```
+- `docs(scratchpad): record structural validation requirements for spec, selector, and containers`
+  - Cluster status inspection commands:
+    ```bash
+    kubectl get nodes
+    kubectl get deployments,pods
+    ```
+
+```
